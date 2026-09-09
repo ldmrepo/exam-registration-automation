@@ -1,0 +1,17 @@
+# Public repository uses an allowlist. Preserve local evidence without shipping it.
+/*
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/CLAUDE.md
+!/install.ps1
+!/LICENSE
+!/CHANGELOG.md
+!/skills/
+!/scripts/
+!/tests/
+__pycache__/
+*.pyc
+*.dpapi
+.env*
+*.tmp
