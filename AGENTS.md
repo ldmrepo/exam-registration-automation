@@ -9,3 +9,11 @@ Windows와 Python 3.11 이상, 브라우저를 제어할 수 있는 Codex 환경
 검증: `python -m unittest discover -s tests -v`, `python scripts/package_release.py`. 실제 연결은 doctor와 브라우저 문서 화면으로 별도 확인한다. 문항 등록은 사용자 지정 범위가 있을 때만 수행한다.
 
 인증 연결은 API, 문항 편집은 현재 브라우저 UI를 사용한다. 저장 직후 ID와 초안을 보존하고 기존 문서를 재열람한다. README에 미검증 환경과 범위를 명확히 기록한다.
+
+## 병렬 등록 역할
+
+시험지 병렬 등록은 [실행 스킬](skills/exam-register/SKILL.md)을 진입점으로 사용한다. 역할의 기준 정의는 배포 스킬 내부의 [마스터](skills/exam-register/references/roles/master.md), [추출·분석](skills/exam-register/references/roles/extractor.md), [편집](skills/exam-register/references/roles/editor.md)이다. `agents/` 문서는 이 정의로 연결하는 안내이며 자동 실행 설정이 아니다.
+
+마스터는 기본 추출 2명과 편집 1명을 실제 협업 도구로 생성할 때 담당 역할 파일을 읽도록 명시하고 작업 경로·항목·버전·소유권을 전달한다. 새 등록 요청에서 추출 인원을 묻되 이미 지정된 값은 재확인하지 않는다. 실제 도구 한도를 먼저 확인한다. 추출 담당은 자신의 항목만 준비하고 마스터만 공식 기록·대기열을 변경한다. 편집기 제어권은 빈 문서 생성 후 단일 편집 담당에게 인계하며 동시에 조작하지 않는다. 문서 정의·오프라인 검증과 실제 등록 검증을 구분한다.
+
+마스터가 명시한 run·항목 범위·최대 실행시간으로 시작한 인계 중계 프로세스는 마스터 소유의 공식 상태 변경 도구다. 편집 담당은 자기 증거와 인계 요청만 작성하고, 중계기가 발급한 새 토큰을 공식 기록과 대조한 뒤 다음 편집을 시작한다. 중계기는 submit-and-claim만 수행하며 최종 finish/return 심사는 마스터가 직접 한다. 외부 에이전트 깨우기나 예약 무인 실행을 지원한다고 해석하지 않는다.

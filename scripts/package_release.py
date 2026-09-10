@@ -12,7 +12,7 @@ def public_files():
     files = [ROOT / name for name in TOP]
     if (ROOT / 'LICENSE').exists():
         files.append(ROOT / 'LICENSE')
-    for folder in ['skills', 'scripts', 'tests']:
+    for folder in ['skills', 'scripts', 'tests', 'agents']:
         files.extend(p for p in (ROOT / folder).rglob('*')
                      if p.is_file() and '__pycache__' not in p.parts and p.suffix in ('.md', '.py', '.yaml'))
     return sorted(files)
@@ -28,7 +28,7 @@ def main():
             raise SystemExit('Personal path found: ' + str(path.relative_to(ROOT)))
     out = ROOT / 'dist'
     out.mkdir(exist_ok=True)
-    archive = out / 'exam-registration-automation-0.1.0-windows.zip'
+    archive = out / 'exam-registration-automation-0.2.0-preview-windows.zip'
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as bundle:
         for path in files:
             bundle.write(path, 'exam-registration-automation/' + path.relative_to(ROOT).as_posix())
