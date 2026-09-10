@@ -8,7 +8,7 @@ Windows + Python 3.11 이상을 지원한다. 웹 서비스·백엔드·브라�
 
 - `status`: 비밀 없이 주소·실행 기록 경로 출력.
 - `doctor`: Bearer 키로 GET `/documents`; 데이터 본문은 출력하지 않음.
-- `open`: POST `/auth/handoff` 후 기본 브라우저 열기. `--print-url`은 Codex 브라우저 도구용 30초 일회용 주소를 출력한다. 즉시 열고 기록에 넣지 않는다. 만료 시 새 코드를 발급한다.
+- `open`: 수동 CLI 사용 시 OS 기본 브라우저를 연다. Codex 자동화는 기존 내장 로그인 탭을 재사용하고 필요한 경우에만 `open --print-url`로 30초 일회용 주소를 받아 내장 브라우저에 즉시 연다. 외부 브라우저 자동 실행을 피하려면 자동화에서 인자 없는 open을 호출하지 않는다. 주소는 기록하지 않으며 만료 시 새 코드를 발급한다. [브라우저 정책](browser-policy.md)을 따른다.
 - `open --redirect /documents/<ID>/edit`: 기존 문서로 인계.
 - `disconnect`: 로컬 연결만 제거. 서버 키 폐기는 사용자가 편집기 설정에서 수행.
 

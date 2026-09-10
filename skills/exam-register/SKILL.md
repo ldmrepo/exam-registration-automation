@@ -9,6 +9,8 @@ description: Search official Korean exam PDFs, visually extract questions in par
 
 ## 진입과 역할
 
+브라우저 작업은 **Codex 내장 브라우저(`iab`)**를 사용한다. 외부 Chrome/Edge로 자동 전환하지 않는다. [내장 브라우저 운영](references/browser-policy.md)을 먼저 적용해 실제 접근 가능한 담당자를 정한다. 서브에이전트가 내장 브라우저에 접근하지 못하면 마스터가 단일 편집 역할을 겸임하며, 추출 분석은 로컬 이미지로 병렬 진행한다. 이 경우 아래 편집 에이전트 생성 지침은 마스터 겸임 절차로 대체한다.
+
 1. 요청 범위와 기존 실행 기록을 확인한다. 새 등록 요청에서 추출 인원이 지정되지 않았으면 “추출·분석 에이전트를 몇 개 사용할까요? 기본은 2개입니다.”라고 묻는다. 답변 전에는 검색·원본 확보·분류만 진행하고 인원에 의존하는 실행은 시작하지 않는다. 실제 동시 실행 한도에서 마스터 1개와 편집 1개를 제외한 수를 확인한다. 한도를 고정값으로 가정하지 않는다.
 2. 기본 구성은 현재 요청을 수행하는 마스터 1 + 추출·분석 2 + 편집 1이다. [실행 연결](references/orchestration.md)을 읽고 실제 서브에이전트를 생성한다. 역할 파일을 만들어 둔 것만으로 실행된다고 보고하지 않는다.
 3. 마스터는 [역할](references/roles/master.md)과 [계획](references/planning.md), 추출 담당은 [역할](references/roles/extractor.md)과 [추출](references/extraction.md), 편집 담당은 [역할](references/roles/editor.md)과 [편집](references/editing.md)을 읽는다. [검증](references/verification.md)은 완료 보고와 인계 심사 시 사용한다.
