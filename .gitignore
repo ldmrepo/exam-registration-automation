@@ -10,6 +10,7 @@
 !/skills/
 !/scripts/
 !/tests/
+!/agents/
 __pycache__/
 *.pyc
 *.dpapi
